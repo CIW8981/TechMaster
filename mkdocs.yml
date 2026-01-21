@@ -1,0 +1,172 @@
+site_name: TechMaster Learning Notes
+site_description: Comprehensive learning notes for AWS technologies, other technologies, and certification preparation
+site_author: TechMaster
+site_url: https://techmaster-learning-notes.github.io/
+
+# Repository
+repo_name: techmaster-learning-notes
+repo_url: https://github.com/techmaster/learning-notes
+
+# Theme configuration
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    # Navigation features
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.path
+    # Search features
+    - search.highlight
+    - search.share
+    - search.suggest
+    # Content features
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    # Table of contents
+    - toc.follow
+    - toc.integrate
+
+# Navigation structure
+nav:
+  - Home: index.md
+  - AWS Technologies:
+    - Overview: aws/index.md
+    - Compute: aws/compute/index.md
+    - Storage: aws/storage/index.md
+    - Networking: aws/networking/index.md
+    - Databases: aws/databases/index.md
+    - Security: aws/security/index.md
+    - Management: aws/management/index.md
+  - Certifications:
+    - Overview: certifications/index.md
+    - AWS Cloud Practitioner: certifications/aws-cloud-practitioner/index.md
+    - AWS Solutions Architect: certifications/aws-solutions-architect/index.md
+    - AWS Developer: certifications/aws-developer/index.md
+    - AWS SysOps: certifications/aws-sysops/index.md
+  - Other Technologies:
+    - Overview: other-technologies/index.md
+    - Docker: other-technologies/docker/index.md
+    - Kubernetes: other-technologies/kubernetes/index.md
+    - Terraform: other-technologies/terraform/index.md
+    - Programming: other-technologies/programming/index.md
+  - Resources:
+    - Overview: resources/index.md
+    - Glossary: resources/glossary.md
+    - Cheat Sheets: resources/cheat-sheets/index.md
+    - Practice Labs: resources/practice-labs/index.md
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      lang: en
+      pipeline:
+        - stemmer
+        - stopWordFilter
+        - trimmer
+  - tags
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      fallback_to_build_date: true
+  - mermaid2:
+      version: 10.6.1
+      arguments:
+        theme: 'default'
+        themeVariables:
+          primaryColor: '#3f51b5'
+          primaryTextColor: '#fff'
+          primaryBorderColor: '#303f9f'
+          lineColor: '#5c6bc0'
+          secondaryColor: '#7986cb'
+          tertiaryColor: '#9fa8da'
+
+# Markdown extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      title: On this page
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extra CSS and JavaScript
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Extra configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/techmaster/learning-notes
+  generator: false

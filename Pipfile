@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+mkdocs = ">=1.5.0"
+mkdocs-material = ">=9.4.0"
+pymdown-extensions = ">=10.3.0"
+mkdocs-git-revision-date-localized-plugin = ">=1.2.0"
+
+[dev-packages]
+
+[scripts]
+dev = "python scripts/dev.py"
+build = "python scripts/build.py"
+validate = "python scripts/validate.py"
+test = "python scripts/test.py"
+serve = "mkdocs serve"
+deploy = "mkdocs gh-deploy"
+
+[requires]
+python_version = "3.12"
