@@ -69,12 +69,14 @@ nav:
     - AWS Solutions Architect: certifications/aws-solutions-architect/index.md
     - AWS Developer: certifications/aws-developer/index.md
     - AWS SysOps: certifications/aws-sysops/index.md
+  - Python:
+        - LocalStack: python/localstack.md
   - Other Technologies:
     - Overview: other-technologies/index.md
     - Docker: other-technologies/docker/index.md
     - Kubernetes: other-technologies/kubernetes/index.md
     - Terraform: other-technologies/terraform/index.md
-    - Programming: other-technologies/programming/index.md
+      
   - Resources:
     - Overview: resources/index.md
     - Glossary: resources/glossary.md
