@@ -60,7 +60,9 @@ nav:
     - Compute: aws/compute/index.md
     - Storage: aws/storage/index.md
     - Networking: aws/networking/index.md
-    - Databases: aws/databases/index.md
+    - Databases: 
+      - Overview: aws/databases/index.md
+      - DynamoDB: aws/databases/dynamodb.md
     - Security: aws/security/index.md
     - Management: aws/management/index.md
   - Certifications:
