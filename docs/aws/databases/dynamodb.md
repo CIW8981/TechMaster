@@ -899,5 +899,128 @@ Minimum information = Complete Primary Key
 - Composite key table → 2 values (partition key + sort key)
 
 ### 16. Why are secondary indexes necessary? What limitation do they overcome?
+Without secondary indexes, you have only two options to access data:
+
+1. GetItem - retrieve by exact primary key (partition key + sort key if composite)
+2. Query - search within a partition key, optionally filtering by sort key
+3. Scan - read the entire table (expensive and slow)
+
+The core limitation: If you need to query data by any attribute other than the primary key, you're forced to scan the
+entire table.
+
+Example scenario:
+
+Table with primary key: UserID (partition key)
+UserID | Email              | Country
+123    | alice@example.com  | USA
+456    | bob@example.com    | Canada
+789    | carol@example.com  | USA
+
+
+Without a secondary index:
+• ✅ Query by UserID: efficient
+• ❌ Query by Email: must scan entire table
+• ❌ Query by Country: must scan entire table
+
+Secondary indexes solve this by:
+
+1. Global Secondary Index (GSI) - Creates an alternate partition key + optional sort key, spans entire table
+2. Local Secondary Index (LSI) - Uses same partition key but different sort key, scoped to partition
+
+With a GSI on Email:
+• ✅ Query by Email: now efficient
+• ✅ Query by UserID: still efficient
 ### 17. What is the trade-off when creating a Global Secondary Index?
+When you create a GSI, you're essentially:
+
+1. DUPLICATING the collection
+• You create a second physical copy of books in a different room
+• Organized by a different system (author name, publication date, etc.)
+• Each GSI is a complete, separate structure
+
+The Trade-offs:
+
+STORAGE COST 📚
+• Main hall: 1000 books
+• Add GSI by author: now 2000 books total (duplicated)
+• Add GSI by date: now 3000 books total
+• You're paying rent for multiple rooms storing duplicate information
+
+WRITE COST ✍️
+• Someone donates a new book → you must:
+  • Catalog it in the main hall
+  • Catalog it in the author reference room
+  • Catalog it in the date reference room
+• Every write operation now costs 3x (1 base table + 2 GSIs)
+• If someone updates a book's information, you update all copies
+
+THROUGHPUT CAPACITY 🚪
+• Each GSI has its own read/write capacity units
+• Like each room having its own entrance with limited capacity
+• A bottleneck in one GSI doesn't block the main table
+• But you pay for capacity in each GSI separately
+
 ### 18. How would you design a table if you could only ask ONE question of your data?
+The question dictates the primary key.
+
+Example 1: "What are all orders for a specific customer?"
+Partition Key: CustomerID
+Sort Key: OrderDate
+
+CustomerID | OrderDate           | OrderID | Amount
+CUST123    | 2026-02-25T10:00   | ORD001  | 50.00
+CUST123    | 2026-02-24T15:30   | ORD002  | 75.00
+CUST456    | 2026-02-25T09:15   | ORD003  | 100.00
+
+
+Example 2: "What is the current status of a specific order?"
+Partition Key: OrderID
+(No sort key needed)
+
+OrderID | CustomerID | Status    | Amount
+ORD001  | CUST123    | Shipped   | 50.00
+ORD002  | CUST123    | Pending   | 75.00
+ORD003  | CUST456    | Delivered | 100.00
+
+
+Example 3: "What are all posts in a specific forum thread?"
+Partition Key: ThreadID
+Sort Key: Timestamp
+
+ThreadID  | Timestamp          | PostID | Author
+THREAD99  | 2026-02-25T10:00  | POST1  | Alice
+THREAD99  | 2026-02-25T10:05  | POST2  | Bob
+THREAD99  | 2026-02-25T10:10  | POST3  | Carol
+
+
+The Design Principle:
+
+1. Identify the access pattern - your ONE question
+2. Extract the lookup value - becomes partition key
+3. Extract the ordering/filtering - becomes sort key (if needed)
+4. Everything else - just attributes
+
+Why this works:
+• No secondary indexes needed (no duplication cost)
+• No scans needed (always efficient queries)
+• Minimal write cost (only one location to update)
+• Strong consistency available
+• Simplest mental model
+
+The hard truth: Real applications ask multiple questions, which is why DynamoDB design is challenging. But starting with
+"if I could only ask ONE question" forces you to identify your most critical access pattern - and that should drive
+your primary key design. Everything else becomes a GSI trade-off decision.
+
+
+
+## Level 4: Capacity and Performance (Why these limits?)
+
+19. What is a Read Capacity Unit (RCU) measuring at its core?
+The fundamental unit:
+1 RCU = 4KB of data read with strong consistency in 1 second
+
+20. What is a Write Capacity Unit (WCU) measuring at its core?
+21. Why does strongly consistent read cost 2x eventually consistent read?
+22. What causes "hot partitions" and why is it a problem?
+23. How does DynamoDB scale horizontally? What happens behind the scenes?
+24. Why is there a 400KB limit on item size?
