@@ -78,6 +78,7 @@ nav:
     - Docker: other-technologies/docker/index.md
     - Kubernetes: other-technologies/kubernetes/index.md
     - Terraform: other-technologies/terraform/index.md
+    - Monorepo: other-technologies/monorepo/index.md
       
   - Resources:
     - Overview: resources/index.md
