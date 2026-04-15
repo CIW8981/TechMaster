@@ -60,7 +60,9 @@ nav:
     - Compute: aws/compute/index.md
     - Storage: aws/storage/index.md
     - Networking: aws/networking/index.md
-    - Databases: aws/databases/index.md
+    - Databases: 
+      - Overview: aws/databases/index.md
+      - DynamoDB: aws/databases/dynamodb.md
     - Security: aws/security/index.md
     - Management: aws/management/index.md
   - Certifications:
@@ -69,12 +71,14 @@ nav:
     - AWS Solutions Architect: certifications/aws-solutions-architect/index.md
     - AWS Developer: certifications/aws-developer/index.md
     - AWS SysOps: certifications/aws-sysops/index.md
+  - Python:
+        - LocalStack: python/localstack.md
   - Other Technologies:
     - Overview: other-technologies/index.md
     - Docker: other-technologies/docker/index.md
     - Kubernetes: other-technologies/kubernetes/index.md
     - Terraform: other-technologies/terraform/index.md
-    - Programming: other-technologies/programming/index.md
+      
   - Resources:
     - Overview: resources/index.md
     - Glossary: resources/glossary.md
