@@ -79,6 +79,10 @@ nav:
     - Kubernetes: other-technologies/kubernetes/index.md
     - Terraform: other-technologies/terraform/index.md
     - Monorepo: other-technologies/monorepo/index.md
+    - Prompt Engineering:
+      - Overview: other-technologies/prompt-engineering/index.md
+      - Vibe Coding with Kiro CLI: other-technologies/prompt-engineering/vibe-coding.md
+      - Kiro CLI Commands: other-technologies/prompt-engineering/kiro-commands.md
       
   - Resources:
     - Overview: resources/index.md
