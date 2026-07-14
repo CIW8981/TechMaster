@@ -80,6 +80,10 @@ nav:
     - Terraform: other-technologies/terraform/index.md
     - Monorepo: other-technologies/monorepo/index.md
     - LogScale: other-technologies/logscale/index.md
+    - DORA Metrics:
+      - First Principles: other-technologies/dora-metrics/index.md
+      - Implementation Tech Stack: other-technologies/dora-metrics/implementation.md
+      - Alternatives & Comparisons: other-technologies/dora-metrics/alternatives.md
     - Prompt Engineering:
       - Overview: other-technologies/prompt-engineering/index.md
       - Vibe Coding with Kiro CLI: other-technologies/prompt-engineering/vibe-coding.md
