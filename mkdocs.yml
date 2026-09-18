@@ -78,6 +78,7 @@ nav:
     - Docker: other-technologies/docker/index.md
     - Kubernetes: other-technologies/kubernetes/index.md
     - Terraform: other-technologies/terraform/index.md
+    - Ansible: other-technologies/ansible/index.md
     - Monorepo: other-technologies/monorepo/index.md
     - LogScale: other-technologies/logscale/index.md
     - DORA Metrics:
@@ -88,6 +89,21 @@ nav:
       - Overview: other-technologies/prompt-engineering/index.md
       - Vibe Coding with Kiro CLI: other-technologies/prompt-engineering/vibe-coding.md
       - Kiro CLI Commands: other-technologies/prompt-engineering/kiro-commands.md
+    - Programming:
+      - Overview: other-technologies/programming/index.md
+      - SOLID Principles (Python): other-technologies/programming/solid-principles.md
+      - DRY, KISS & YAGNI (Python): other-technologies/programming/dry-kiss-yagni.md
+      - Composition over Inheritance (Python): other-technologies/programming/composition-over-inheritance.md
+      - Law of Demeter (Python): other-technologies/programming/law-of-demeter.md
+      - Separation of Concerns (Python): other-technologies/programming/separation-of-concerns.md
+      - Design Patterns:
+        - Overview: other-technologies/programming/design-patterns/index.md
+        - Strategy (Python): other-technologies/programming/design-patterns/strategy.md
+        - Factory (Python): other-technologies/programming/design-patterns/factory.md
+        - Repository (Python): other-technologies/programming/design-patterns/repository.md
+        - Observer (Python): other-technologies/programming/design-patterns/observer.md
+        - Adapter (Python): other-technologies/programming/design-patterns/adapter.md
+        - Decorator (Python): other-technologies/programming/design-patterns/decorator.md
       
   - Resources:
     - Overview: resources/index.md
